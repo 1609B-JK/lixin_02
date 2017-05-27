@@ -9,4 +9,6 @@ import java.util.List;
  */
 public interface BannerService {
     List<BannerResponse> select_banner_list();
+
+    List<BannerResponse> select_zybanner_list();
 }

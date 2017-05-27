@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >  
+<mapper namespace="com.jk.mapper.sorl.KeywordMapper">
+
+    <select id="searchKeyword_List" parameterType="keyword" resultType="keyword">
+        select * from (
+            select a.*, rownum rn from(
+                select
+                  t_wordID as "wordID" ,
+                  t_wordName as "wordName"
+                  from t_sorls where 1 = 1
+                  <if test="pinYin!=null and pinYin!='' ">
+                      AND (t_pinyin like #{pinYin}||'%') or (t_pinyin like '%'||#{pinYin})
+                  </if>
+                     ORDER BY t_wordID
+        ) a
+            where <![CDATA[rownum<=10]]>)
+        where <![CDATA[rn>=1]]>
+    </select>
+
+
+</mapper>   

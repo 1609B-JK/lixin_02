@@ -2,10 +2,12 @@ package com.jk.entity.user;
 
 import common.util.Page;
 
+import java.io.Serializable;
+
 /**
  * Created by nihao on 2017/5/23.
  */
-public class User extends Page{
+public class User extends Page implements Serializable{
 
     private int userID;
 

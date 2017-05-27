@@ -21,4 +21,9 @@ public class BannerServiceImpl implements BannerService{
     public List<BannerResponse> select_banner_list() {
         return bannerMapper.select_banner_list();
     }
+
+    @Override
+    public List<BannerResponse> select_zybanner_list() {
+        return bannerMapper.select_zybanner_list();
+    }
 }

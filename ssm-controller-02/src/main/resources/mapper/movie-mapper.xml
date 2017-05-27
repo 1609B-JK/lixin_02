@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >  
+<mapper namespace="com.jk.mapper.zymovie.MovieMapper">
+
+    <select id="select_movie_list"  resultType="MovieResponse">
+        select * from (
+            select a.*, rownum rn from(
+                select
+                  t_id as "movieID" ,
+                  t_title as "movieTitle",
+                  t_content as "movieContent",
+                  t_movieImgPath as "movieImgPath",
+                  t_movieLinkUrl as "movieLinkUrl"
+                  from tt_movies
+        ) a
+            where <![CDATA[rownum<=6]]>)
+        where <![CDATA[rn>=1]]>
+    </select>
+
+</mapper>   
